@@ -1,0 +1,4 @@
+set guifont=FiraCode\ Nerd\ Font\ Mono:h12
+set tabstop=4
+set shiftwidth=4
+set expandtab
