@@ -2,18 +2,13 @@
   {
     "layer": "top",
     "position": "top",
-    "height": 24,
+    "name": "top",
+    "height": 37,
     "spacing": 8,
     "modules-left": [
       "custom/launcher",
       "hyprland/window",
-      "custom/texttwo",
-      "custom/textthree",
-      "custom/textfour",
-      "custom/textfive"
-    ],
-    "modules-center": [
-      "sway/window"
+      "hyprland/workspaces"
     ],
     "modules-right": [
       "mpd",
@@ -22,11 +17,36 @@
       "cpu",
       "memory",
       "network",
+      "custom/bluetooth",
       "pulseaudio",
       "keyboard-state",
       "tray",
       "clock"
     ],
+    "hyprland/workspaces": {
+      "format": "{name}",
+      "sort-by": "number",
+      "persistent-workspaces": {
+        "*": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "workspace-taskbar": {
+        "enable": true,
+        "update-active-window": true,
+        "icon-size": 16,
+        "on-click-window": "hyprctl dispatch focuswindow address:{address} | grep -q '^ok$' || hyprctl dispatch 'hl.dsp.focus({ window = \"address:{address}\" })'"
+      }
+    },
     "hyprland/window": {
       "format": "{class}",
       "max-length": 20,
@@ -35,29 +55,17 @@
       }
     },
     "custom/launcher": {
-      "format": "🔍",
+      "format": "\ud83d\udd0d",
       "on-click": "hyprlauncher",
       "tooltip": false
-    },
-    "custom/texttwo": {
-      "exec": "echo 'File'",
-      "interval": 60,
-      "return-type": "plain",
-      "on-click": "thunar"
-    },
-    "custom/textthree": {
-      "exec": "echo 'Edit'",
-      "interval": 60,
-      "return-type": "plain",
-      "on-click": "code"
     },
     "keyboard-state": {
       "numlock": true,
       "capslock": true,
       "format": "{name} {icon} ",
       "format-icons": {
-        "locked": "",
-        "unlocked": ""
+        "locked": "\uf023",
+        "unlocked": "\uf09c"
       }
     },
     "sway/mode": {
@@ -68,32 +76,32 @@
       "show-empty": false,
       "format-icons": [
         "",
-        ""
+        "\uf2d2"
       ],
       "tooltip": true,
       "tooltip-format": "{app}: {title}"
     },
     "mpd": {
-      "format": "  {title} - {artist} {stateIcon} [{elapsedTime:%M:%S}/{totalTime:%M:%S}] {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}[{songPosition}/{queueLength}] [{volume}%]",
-      "format-disconnected": " Disconnected",
-      "format-stopped": " {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped",
+      "format": "\uf001  {title} - {artist} {stateIcon} [{elapsedTime:%M:%S}/{totalTime:%M:%S}] {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}[{songPosition}/{queueLength}] [{volume}%]",
+      "format-disconnected": "\uf001 Disconnected",
+      "format-stopped": "\uf001 {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped",
       "unknown-tag": "N/A",
       "interval": 2,
       "consume-icons": {
-        "on": " "
+        "on": "\uf0c4 "
       },
       "random-icons": {
-        "on": " "
+        "on": "\uf074 "
       },
       "repeat-icons": {
-        "on": " "
+        "on": "\uf01e "
       },
       "single-icons": {
-        "on": "1 "
+        "on": "\uf01e1 "
       },
       "state-icons": {
-        "paused": "",
-        "playing": ""
+        "paused": "\uf04c",
+        "playing": "\uf04b"
       },
       "tooltip-format": "MPD (connected)",
       "tooltip-format-disconnected": "MPD (disconnected)",
@@ -105,8 +113,8 @@
     "idle_inhibitor": {
       "format": "{icon}",
       "format-icons": {
-        "activated": "",
-        "deactivated": ""
+        "activated": "\uf06e",
+        "deactivated": "\uf070"
       }
     },
     "tray": {
@@ -117,45 +125,53 @@
       "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "cpu": {
-      "format": "  {usage}%",
+      "format": "\uf2db  {usage}%",
       "on-click": "alacritty -e btop"
     },
     "memory": {
-      "format": " {}%"
+      "format": "\uf0c9 {}%"
     },
     "temperature": {
       "thermal-zone": 2,
       "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
       "critical-threshold": 80,
-      "format-critical": "{icon} {temperatureC}°C",
-      "format": "{icon} {temperatureC}°C",
+      "format-critical": "{icon} {temperatureC}\u00b0C",
+      "format": "{icon} {temperatureC}\u00b0C",
       "format-icons": [
-        "",
-        "",
-        ""
+        "\uf76b",
+        "\uf2c9",
+        "\uf769"
       ]
     },
     "network": {
-      "format-wifi": "{essid} ({signalStrength}%) ",
-      "format-ethernet": " {ifname}",
-      "tooltip-format": " {ifname} via {gwaddr}",
-      "format-linked": " {ifname} (No IP)",
-      "format-disconnected": "Disconnected ⚠ {ifname}",
-      "format-alt": " {ifname}: {ipaddr}/{cidr}"
+      "format-wifi": "{essid} ({signalStrength}%) \uf1eb",
+      "format-ethernet": "\uf796 {ifname}",
+      "tooltip-format": "\uf796 {ifname} via {gwaddr}",
+      "format-linked": "\uf796 {ifname} (No IP)",
+      "format-disconnected": "Disconnected \u26a0 {ifname}",
+      "format-alt": "\uf796 {ifname}: {ipaddr}/{cidr}"
+    },
+    "custom/bluetooth": {
+      "exec": "{{ .chezmoi.homeDir }}/.local/bin/bt-reconnect.sh --status",
+      "interval": 10,
+      "signal": 3,
+      "on-click": "{{ .chezmoi.homeDir }}/.local/bin/bt-reconnect.sh",
+      "return-type": "json",
+      "tooltip": true
     },
     "pulseaudio": {
       "scroll-step": 5,
       "format": "{icon}  {volume}% {format_source}",
-      "format-bluetooth": " {icon} {volume}% {format_source}",
-      "format-bluetooth-muted": "  {icon} {format_source}",
-      "format-muted": "  {format_source}",
-      "format-source": " {volume}%",
-      "format-source-muted": "",
+      "format-bluetooth": "\uf294 {icon} {volume}% {format_source}",
+      "format-bluetooth-muted": "\uf6a9 \uf294 {icon} {format_source}",
+      "format-muted": "\uf6a9  {format_source}",
+      "format-source": "\uf130 {volume}%",
+      "format-source-muted": "\uf131",
       "format-icons": {
         "default": [
-          "",
-          "",
-          ""
+          "\uf026",
+          "\uf027",
+          "\uf028"
         ]
       },
       "on-click": "pavucontrol",
@@ -167,6 +183,7 @@
   {
     "layer": "top",
     "position": "bottom",
+    "name": "bottom",
     "height": 41,
     "width": 2,
     "modules-left": [
@@ -182,7 +199,7 @@
       "max-length": 50
     },
     "custom/os_button": {
-      "format": "🔍",
+      "format": "\ud83d\udd0d",
       "on-click": "wofi --show drun",
       "tooltip": false
     },

@@ -1,4 +1,75 @@
-set guifont=FiraCode\ Nerd\ Font\ Mono:h12
-set tabstop=4
-set shiftwidth=4
+" Minimal, self-contained Vim config (no plugins required)
+
+set nocompatible
+filetype plugin indent on
+syntax on
+
+" UI
+set termguicolors            " True color support
+set number                   " Absolute line numbers
+set relativenumber           " Relative numbers (hybrid)
+set cursorline               " Highlight current line
+set showmatch                " Show matching brackets
+set signcolumn=yes           " Keep sign column visible
+set laststatus=2             " Always show statusline
+set showmode                 " Show mode in command area
+set mouse=a                  " Enable mouse
+
+" Editing
 set expandtab
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set smartindent
+set nowrap
+set splitbelow
+set splitright
+set undofile
+set updatetime=300
+set timeoutlen=500
+
+" Search
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+" Performance
+set hidden
+set lazyredraw
+
+" Worldwall palette theme; autumn remains a fallback if no generated theme exists.
+set background=dark
+let s:worldwall_theme_file = expand("~/.vim/colors/worldwall.vim")
+if filereadable(s:worldwall_theme_file)
+    colorscheme worldwall
+    let g:worldwall_theme_signature = getftime(s:worldwall_theme_file) . ":" . getfsize(s:worldwall_theme_file)
+else
+    colorscheme autumn
+    let g:worldwall_theme_signature = ""
+endif
+
+function! s:worldwall_theme_refresh() abort
+    let l:mtime = getftime(s:worldwall_theme_file)
+    if l:mtime < 0
+        return
+    endif
+    let l:signature = l:mtime . ":" . getfsize(s:worldwall_theme_file)
+    if get(g:, "worldwall_theme_signature", "") !=# l:signature
+        let g:worldwall_theme_signature = l:signature
+        silent! colorscheme worldwall
+    endif
+endfunction
+
+augroup worldwall_theme_sync
+    autocmd!
+    autocmd CursorHold,FocusGained,BufEnter * call <SID>worldwall_theme_refresh()
+augroup END
+
+" Keybindings
+let mapleader = "\<Space>"
+nnoremap <leader><leader> :nohlsearch<CR>
+
+" Small tweaks
+set conceallevel=2
+set formatoptions-=cro     " Don't auto-wrap comments on insert

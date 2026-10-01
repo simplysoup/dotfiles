@@ -1,45 +1,129 @@
+@import url("worldwall-theme.css");
+
+@define-color worldwall_material_surface mix(@worldwall_average, #000000, 0.80);
+@define-color worldwall_material_backplate alpha(@worldwall_material_surface, 0.90);
+@define-color worldwall_material_text @worldwall_accent;
+@define-color worldwall_material_highlight @worldwall_accent;
+@define-color worldwall_material_outline alpha(@worldwall_accent, 0.62);
+@define-color worldwall_material_glow alpha(@worldwall_accent, 0.18);
+
 * {
-  font-size: 16px;
+  font-size: 14px;
   min-height: 0;
-  border-radius: 1rem;
-  padding: 0.1rem;
-  font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", "Font Awesome 5 Free", "Font Awesome 5 Brands", "FontAwesome", sans-serif;
+  border-radius: 8px;
+  padding: 0;
+  font-family: "Fira Code", "Font Awesome 6 Free", "Font Awesome 6 Brands", "Font Awesome 5 Free", "Font Awesome 5 Brands", "FontAwesome", sans-serif;
 }
 
 window#waybar {
-  background: rgba(255, 255, 255, 0);
-  color: rgb(5, 241, 245);
-  font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", "Font Awesome 5 Free", "Font Awesome 5 Brands", "FontAwesome", sans-serif;
+  background: transparent;
+  color: @worldwall_material_text;
+}
+
+window#waybar label {
+  color: @worldwall_material_text;
+  text-shadow: none;
+}
+
+/* Two top-only scene-tinted material capsules; the unused center group is omitted. */
+window#waybar.top .modules-left,
+window#waybar.top .modules-right {
+  min-height: 27px;
+  margin: 2px 6px;
+  padding: 0 9px;
+  border: 1px solid @worldwall_material_outline;
+  border-radius: 15px;
+  background: @worldwall_material_backplate;
+  box-shadow: 0 1px 10px @worldwall_material_glow;
+}
+
+/* Keep the bottom open-window bar free of capsule and button fills. */
+window#waybar.bottom .modules-left,
+window#waybar.bottom .modules-center,
+window#waybar.bottom .modules-right,
+window#waybar.bottom #mode,
+window#waybar.bottom #custom-os_button,
+window#waybar.bottom #taskbar,
+window#waybar.bottom #taskbar button {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+window#waybar.bottom #taskbar button.active {
+  border-bottom: 1px solid @worldwall_accent;
 }
 
 tooltip {
-  background: #05f1f5;
+  background: @worldwall_material_surface;
+  border: 1px solid @worldwall_material_outline;
+  border-radius: 10px;
 }
+
 tooltip label {
-  color: white;
+  color: @worldwall_material_text;
+}
+
+#workspaces {
+  margin: 0 4px;
 }
 
 #workspaces button {
-  padding: 0 5px;
+  min-width: 26px;
+  margin: 2px 1px;
+  padding: 0 6px;
+  border: 1px solid transparent;
+  border-radius: 8px;
   background: transparent;
-  color: red;
-  border-bottom: 3px solid transparent;
+  color: @worldwall_material_text;
+  box-shadow: none;
+  transition: all 0.2s ease;
 }
 
-#workspaces button.focused {
-  background: #05f1f5;
-  border-bottom: 3px solid white;
+#workspaces button:hover {
+  background: alpha(@worldwall_material_surface, 0.48);
+  border-color: alpha(@worldwall_accent, 0.46);
+  color: @worldwall_material_highlight;
+}
+
+#workspaces button.active {
+  background: alpha(@worldwall_material_surface, 0.62);
+  border-color: @worldwall_accent;
+  color: @worldwall_material_highlight;
+  box-shadow: 0 0 6px @worldwall_material_glow;
+}
+
+#workspaces button.empty {
+  background: transparent;
+  color: @worldwall_material_text;
+}
+
+#workspaces .workspace-label {
+  padding: 0;
+}
+
+#workspaces .taskbar-window {
+  min-width: 0;
+  margin: 0 1px;
+  padding: 0 3px;
+  border-radius: 6px;
+}
+
+#workspaces .taskbar-window.active {
+  background: transparent;
+  border-bottom: 1px solid @worldwall_accent;
 }
 
 #mode,
 #clock,
 #battery {
-  padding: 0 10px;
+  padding: 0 9px;
 }
 
 #mode {
-  background: #05f1f5;
-  border-bottom: 3px solid white;
+  background: alpha(@worldwall_material_surface, 0.62);
+  border: 1px solid alpha(@worldwall_accent, 0.58);
+  color: @worldwall_material_highlight;
 }
 
 #clock,
@@ -50,18 +134,18 @@ tooltip label {
 #temperature,
 #backlight,
 #network,
+#custom-bluetooth,
 #pulseaudio,
 #wireplumber,
 #custom-media,
 #tray,
-#mode,
 #idle_inhibitor,
 #scratchpad,
 #mpd {
-  margin: 2px;
+  margin: 1px 3px;
   padding-left: 4px;
   padding-right: 4px;
-  color: #05f1f5;
+  color: @worldwall_material_text;
 }
 
 .modules-left > widget:first-child > #workspaces {
@@ -72,40 +156,38 @@ tooltip label {
   margin-right: 0;
 }
 
+#custom-launcher,
+#clock {
+  color: @worldwall_material_highlight;
+  font-weight: 600;
+}
+
 #clock {
   font-size: 14px;
 }
 
 #battery icon {
-  color: red;
+  color: @worldwall_material_highlight;
 }
 
 #battery.charging,
 #battery.plugged {
-  color: #ffffff;
-  background-color: #26a65b;
+  color: @worldwall_material_highlight;
+  background-color: alpha(@worldwall_material_surface, 0.52);
+  border-radius: 7px;
 }
 
 @keyframes blink {
   to {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #f3d89b;
+    color: #241c12;
   }
 }
 
-#battery.warning:not(.charging) {
-  background-color: #f53c3c;
-  color: #ffffff;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
+#battery.warning:not(.charging),
 #battery.critical:not(.charging) {
-  background-color: #f53c3c;
-  color: #ffffff;
+  background-color: #541d23;
+  color: #ffc1b7;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: linear;
@@ -114,20 +196,39 @@ tooltip label {
 }
 
 label:focus {
-  background-color: #000000;
+  background-color: alpha(@worldwall_material_surface, 0.72);
+  color: @worldwall_material_highlight;
 }
 
 #network.disconnected {
-  background-color: #f53c3c;
+  background-color: #541d23;
+  color: #ffc1b7;
+  border-radius: 7px;
+}
+
+#custom-bluetooth.disconnected {
+  color: @worldwall_material_text;
+}
+
+#custom-bluetooth.unknown {
+  color: @worldwall_material_highlight;
+}
+
+#custom-bluetooth:hover {
+  background: alpha(@worldwall_material_surface, 0.48);
+  color: @worldwall_material_highlight;
 }
 
 #temperature.critical {
-  background-color: #eb4d4b;
+  background-color: #541d23;
+  color: #ffc1b7;
+  border-radius: 7px;
 }
 
 #idle_inhibitor.activated {
-  background-color: #ecf0f1;
-  color: #2d3436;
+  background-color: alpha(@worldwall_material_surface, 0.62);
+  color: @worldwall_material_highlight;
+  border-radius: 7px;
 }
 
 #tray > .passive {
@@ -136,15 +237,23 @@ label:focus {
 
 #tray > .needs-attention {
   -gtk-icon-effect: highlight;
-  background-color: #eb4d4b;
+  background-color: #541d23;
+  color: #ffc1b7;
+  border-radius: 7px;
 }
 
 #custom-os_button {
-  font-size: 32px;
+  color: @worldwall_material_highlight;
+  font-size: 24px;
   transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
-  font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", "Font Awesome 5 Free", "Font Awesome 5 Brands", "FontAwesome", sans-serif;
 }
+
 #custom-os_button:hover {
-  background: white;
-  color: black;
+  background: alpha(@worldwall_material_surface, 0.48);
+  color: @worldwall_material_highlight;
+}
+
+window#waybar.bottom #custom-os_button:hover,
+window#waybar.bottom #taskbar button:hover {
+  background: transparent;
 }

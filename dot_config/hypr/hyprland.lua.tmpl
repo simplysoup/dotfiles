@@ -1,0 +1,288 @@
+-- Active Hyprland 0.56.2 Lua configuration, managed by chezmoi.
+-- Originally generated from the legacy config with migration-lua/generate.py.
+-- Monitor outputs below are desktop-specific; adjust them on other machines.
+-- No legacy parser or dispatcher dependencies. Unspecified defaults remain unspecified.
+
+-- Legacy line 23
+hl.monitor({ output = "HDMI-A-1", mode = "1920x1080@60.00", position = "2272x960", scale = 1.00 })
+-- Legacy line 24
+hl.monitor({ output = "HDMI-A-2", mode = "1920x1080@60.00", position = "352x960", scale = 1.00 })
+-- Legacy line 64
+hl.env("XCURSOR_SIZE", "24")
+-- Legacy line 65
+hl.env("HYPRCURSOR_SIZE", "24")
+-- Legacy line 93
+hl.config({ ["general.gaps_in"] = 5 })
+-- Legacy line 94
+hl.config({ ["general.gaps_out"] = 20 })
+-- Legacy line 96
+hl.config({ ["general.border_size"] = 2 })
+-- Legacy line 99
+hl.config({ ["general.col.active_border"] = "rgba(796a91bb)" })
+-- Legacy line 100
+hl.config({ ["general.col.inactive_border"] = "rgba(595959aa)" })
+-- Legacy line 103
+hl.config({ ["general.resize_on_border"] = false })
+-- Legacy line 106
+hl.config({ ["general.allow_tearing"] = false })
+-- Legacy line 108
+hl.config({ ["general.layout"] = "dwindle" })
+-- Legacy line 113
+hl.config({ ["decoration.rounding"] = 10 })
+-- Legacy line 114
+hl.config({ ["decoration.rounding_power"] = 2 })
+-- Legacy line 117
+hl.config({ ["decoration.active_opacity"] = 1.0 })
+-- Legacy line 118
+hl.config({ ["decoration.inactive_opacity"] = 1.0 })
+-- Legacy line 121
+hl.config({ ["decoration.shadow.enabled"] = true })
+-- Legacy line 122
+hl.config({ ["decoration.shadow.range"] = 4 })
+-- Legacy line 123
+hl.config({ ["decoration.shadow.render_power"] = 3 })
+-- Legacy line 124
+hl.config({ ["decoration.shadow.color"] = "rgba(1a1a1aee)" })
+-- Legacy line 129
+hl.config({ ["decoration.blur.enabled"] = true })
+-- Legacy line 130
+hl.config({ ["decoration.blur.size"] = 3 })
+-- Legacy line 131
+hl.config({ ["decoration.blur.passes"] = 1 })
+-- Legacy line 133
+hl.config({ ["decoration.blur.vibrancy"] = 0.1696 })
+-- Legacy line 138
+hl.config({ ["debug.full_cm_proto"] = true })
+-- Legacy line 143
+hl.config({ ["animations.enabled"] = true })
+-- Legacy line 147
+hl.curve("easeOutQuint", { type = "bezier", points = { {0.23, 1}, {0.32, 1} } })
+-- Legacy line 148
+hl.curve("easeInOutCubic", { type = "bezier", points = { {0.65, 0.05}, {0.36, 1} } })
+-- Legacy line 149
+hl.curve("linear", { type = "bezier", points = { {0, 0}, {1, 1} } })
+-- Legacy line 150
+hl.curve("almostLinear", { type = "bezier", points = { {0.5, 0.5}, {0.75, 1} } })
+-- Legacy line 151
+hl.curve("quick", { type = "bezier", points = { {0.15, 0}, {0.1, 1} } })
+-- Legacy line 155
+hl.animation({ leaf = "global", enabled = true, speed = 10, bezier = "default" })
+-- Legacy line 156
+hl.animation({ leaf = "border", enabled = true, speed = 5.39, bezier = "easeOutQuint" })
+-- Legacy line 157
+hl.animation({ leaf = "windows", enabled = true, speed = 4.79, bezier = "easeOutQuint" })
+-- Legacy line 158
+hl.animation({ leaf = "windowsIn", enabled = true, speed = 4.1, bezier = "easeOutQuint", style = "popin 87%" })
+-- Legacy line 159
+hl.animation({ leaf = "windowsOut", enabled = true, speed = 1.49, bezier = "linear", style = "popin 87%" })
+-- Legacy line 160
+hl.animation({ leaf = "fadeIn", enabled = true, speed = 1.73, bezier = "almostLinear" })
+-- Legacy line 161
+hl.animation({ leaf = "fadeOut", enabled = true, speed = 1.46, bezier = "almostLinear" })
+-- Legacy line 162
+hl.animation({ leaf = "fade", enabled = true, speed = 3.03, bezier = "quick" })
+-- Legacy line 163
+hl.animation({ leaf = "layers", enabled = true, speed = 3.81, bezier = "easeOutQuint" })
+-- Legacy line 164
+hl.animation({ leaf = "layersIn", enabled = true, speed = 4, bezier = "easeOutQuint", style = "fade" })
+-- Legacy line 165
+hl.animation({ leaf = "layersOut", enabled = true, speed = 1.5, bezier = "linear", style = "fade" })
+-- Legacy line 166
+hl.animation({ leaf = "fadeLayersIn", enabled = true, speed = 1.79, bezier = "almostLinear" })
+-- Legacy line 167
+hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 1.39, bezier = "almostLinear" })
+-- Legacy line 168
+hl.animation({ leaf = "workspaces", enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
+-- Legacy line 169
+hl.animation({ leaf = "workspacesIn", enabled = true, speed = 1.21, bezier = "almostLinear", style = "fade" })
+-- Legacy line 170
+hl.animation({ leaf = "workspacesOut", enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
+-- Legacy line 171
+hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" })
+-- Legacy line 199
+hl.config({ ["master.new_status"] = "master" })
+-- Legacy line 204
+hl.config({ ["misc.force_default_wallpaper"] = -1 })
+-- Legacy line 205
+hl.config({ ["misc.disable_hyprland_logo"] = false })
+-- Legacy line 215
+hl.config({ ["input.kb_layout"] = "us" })
+-- Legacy line 216
+hl.config({ ["input.kb_variant"] = "" })
+-- Legacy line 217
+hl.config({ ["input.kb_model"] = "" })
+-- Legacy line 218
+hl.config({ ["input.kb_options"] = "" })
+-- Legacy line 219
+hl.config({ ["input.kb_rules"] = "" })
+-- Legacy line 221
+hl.config({ ["input.follow_mouse"] = 1 })
+-- Legacy line 223
+hl.config({ ["input.sensitivity"] = 0 })
+-- Legacy line 226
+hl.config({ ["input.touchpad.natural_scroll"] = false })
+-- Legacy line 231
+hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
+-- Legacy line 238
+hl.device({
+    ["name"] = "epic-mouse-v1",
+    ["sensitivity"] = -0.5
+})
+-- Legacy line 250
+hl.bind("SUPER + Q", hl.dsp.exec_cmd("alacritty"))
+-- Legacy line 251
+hl.bind("SUPER + RETURN", hl.dsp.exec_cmd("alacritty"))
+-- Legacy line 252
+hl.bind("SUPER + C", hl.dsp.window.close())
+-- Legacy line 253
+hl.bind("SUPER + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+-- Legacy line 254
+hl.bind("SUPER + E", hl.dsp.exec_cmd("thunar"))
+-- Legacy line 255
+hl.bind("SUPER + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
+-- Legacy line 256
+hl.bind("SUPER + W", hl.dsp.exec_cmd("firefox"))
+-- Legacy line 257
+hl.bind("SUPER + G", hl.dsp.exec_cmd("steam"))
+-- Legacy line 258
+hl.bind("SUPER + SHIFT + G", hl.dsp.exec_cmd("steam steam://run/recent"))
+-- Legacy line 259
+hl.bind("SUPER + V", hl.dsp.window.float({ action = "toggle" }))
+-- Legacy line 260
+hl.bind("SUPER + R", hl.dsp.exec_cmd("hyprlauncher"))
+-- Legacy line 261
+hl.bind("SUPER + SHIFT + RETURN", hl.dsp.exec_cmd("hyprlauncher"))
+-- Legacy line 262
+hl.bind("SUPER + B", hl.dsp.exec_cmd("killall -SIGUSR1 waybar"))
+-- Legacy line 263
+hl.bind("SUPER + SHIFT + B", hl.dsp.exec_cmd("{{ .chezmoi.homeDir }}/.local/bin/bt-reconnect.sh"))
+hl.bind("SUPER + D", hl.dsp.exec_cmd("worldwallctl next"))
+-- Legacy line 264
+hl.bind("SUPER + P", hl.dsp.window.pseudo())
+-- Legacy line 265
+hl.bind("SUPER + J", hl.dsp.layout("togglesplit"))
+-- Legacy line 266
+hl.bind("SUPER + T", hl.dsp.exec_cmd("code"))
+-- Legacy line 267
+hl.bind("SUPER + Y", hl.dsp.exec_cmd("signal-desktop"))
+-- Legacy line 268
+hl.bind("Print", hl.dsp.exec_cmd("grim - | swappy -f -"))
+-- Legacy line 269
+hl.bind("SUPER + Print", hl.dsp.exec_cmd("grim -g \"$(slurp)\" - | swappy -f -"))
+-- Legacy line 270
+hl.bind("pause", hl.dsp.exec_cmd("systemctl suspend"))
+-- Legacy line 271
+hl.bind("SUPER + pause", hl.dsp.exec_cmd("systemctl hibernate"))
+-- Legacy line 272
+hl.bind("SUPER + SHIFT + pause", hl.dsp.exec_cmd("systemctl reboot"))
+-- Legacy line 275
+hl.bind("SUPER + left", hl.dsp.focus({ direction = "left" }))
+-- Legacy line 276
+hl.bind("SUPER + right", hl.dsp.focus({ direction = "right" }))
+-- Legacy line 277
+hl.bind("SUPER + up", hl.dsp.focus({ direction = "up" }))
+-- Legacy line 278
+hl.bind("SUPER + down", hl.dsp.focus({ direction = "down" }))
+-- Legacy line 281
+hl.bind("SUPER + 1", hl.dsp.focus({ workspace = 1 }))
+-- Legacy line 282
+hl.bind("SUPER + 2", hl.dsp.focus({ workspace = 2 }))
+-- Legacy line 283
+hl.bind("SUPER + 3", hl.dsp.focus({ workspace = 3 }))
+-- Legacy line 284
+hl.bind("SUPER + 4", hl.dsp.focus({ workspace = 4 }))
+-- Legacy line 285
+hl.bind("SUPER + 5", hl.dsp.focus({ workspace = 5 }))
+-- Legacy line 286
+hl.bind("SUPER + 6", hl.dsp.focus({ workspace = 6 }))
+-- Legacy line 287
+hl.bind("SUPER + 7", hl.dsp.focus({ workspace = 7 }))
+-- Legacy line 288
+hl.bind("SUPER + 8", hl.dsp.focus({ workspace = 8 }))
+-- Legacy line 289
+hl.bind("SUPER + 9", hl.dsp.focus({ workspace = 9 }))
+-- Legacy line 290
+hl.bind("SUPER + 0", hl.dsp.focus({ workspace = 10 }))
+-- Legacy line 293
+hl.bind("SUPER + SHIFT + 1", hl.dsp.window.move({ workspace = 1 }))
+-- Legacy line 294
+hl.bind("SUPER + SHIFT + 2", hl.dsp.window.move({ workspace = 2 }))
+-- Legacy line 295
+hl.bind("SUPER + SHIFT + 3", hl.dsp.window.move({ workspace = 3 }))
+-- Legacy line 296
+hl.bind("SUPER + SHIFT + 4", hl.dsp.window.move({ workspace = 4 }))
+-- Legacy line 297
+hl.bind("SUPER + SHIFT + 5", hl.dsp.window.move({ workspace = 5 }))
+-- Legacy line 298
+hl.bind("SUPER + SHIFT + 6", hl.dsp.window.move({ workspace = 6 }))
+-- Legacy line 299
+hl.bind("SUPER + SHIFT + 7", hl.dsp.window.move({ workspace = 7 }))
+-- Legacy line 300
+hl.bind("SUPER + SHIFT + 8", hl.dsp.window.move({ workspace = 8 }))
+-- Legacy line 301
+hl.bind("SUPER + SHIFT + 9", hl.dsp.window.move({ workspace = 9 }))
+-- Legacy line 302
+hl.bind("SUPER + SHIFT + 0", hl.dsp.window.move({ workspace = 10 }))
+-- Legacy line 305
+hl.bind("SUPER + S", hl.dsp.workspace.toggle_special("magic"))
+-- Legacy line 306
+hl.bind("SUPER + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+-- Legacy line 309
+hl.bind("SUPER + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
+-- Legacy line 310
+hl.bind("SUPER + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
+-- Legacy line 313
+hl.bind("SUPER + mouse:272", hl.dsp.window.drag())
+-- Legacy line 314
+hl.bind("SUPER + mouse:273", hl.dsp.window.resize())
+-- Legacy line 317
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true, locked = true })
+-- Legacy line 318
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { repeating = true, locked = true })
+-- Legacy line 319
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { repeating = true, locked = true })
+-- Legacy line 320
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), { repeating = true, locked = true })
+-- Legacy line 321
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { repeating = true, locked = true })
+-- Legacy line 322
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { repeating = true, locked = true })
+-- Legacy line 325
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
+-- Legacy line 326
+hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+-- Legacy line 327
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+-- Legacy line 328
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
+-- Legacy line 345
+hl.window_rule({
+    ["name"] = "suppress-maximize-events",
+    match = { ["class"] = ".*" },
+    ["suppress_event"] = "maximize"
+})
+-- Legacy line 358
+hl.window_rule({
+    ["name"] = "fix-xwayland-drags",
+    match = { ["class"] = "^$", ["title"] = "^$", ["xwayland"] = true, ["float"] = true, ["fullscreen"] = false, ["pin"] = false },
+    ["no_focus"] = true
+})
+-- Legacy line 368
+hl.window_rule({
+    ["name"] = "move-hyprland-run",
+    match = { ["class"] = "hyprland-run" },
+    ["move"] = "20 monitor_h-120",
+    ["float"] = true
+})
+
+-- exec-once: run only at compositor startup, not on config reload.
+hl.on("hyprland.start", function()
+    hl.exec_cmd("systemctl --user start hyprpolkitagent")
+    hl.exec_cmd("dunst")
+    hl.exec_cmd("waybar")
+    hl.exec_cmd("wl-paste --type text --watch cliphist store")
+    hl.exec_cmd("wl-paste --type image --watch cliphist store")
+    -- Config-driven time/weather/animation; logind handles resume in-process.
+    -- The session launcher holds the lock and owns the palette watcher lifecycle.
+    hl.exec_cmd("{{ .chezmoi.homeDir }}/.local/bin/worldwall-session")
+end)

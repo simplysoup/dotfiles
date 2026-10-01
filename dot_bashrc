@@ -2,6 +2,11 @@
 # ~/.bashrc
 #
 
+case ":$PATH:" in
+    *":$HOME/.local/bin:"*) ;;
+    *) export PATH="$HOME/.local/bin:$PATH" ;;
+esac
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
